@@ -1,72 +1,79 @@
 package ru.netology.service;
 
-import org.testng.annotations.Test;
-
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
+import org.junit.Test;
+import org.junit.Before;
 
 public class CashbackHackServiceTest {
 
+    CashbackHackService CashbackHackService;
+
+    @Before
+    public void initialize() {
+        CashbackHackService = new CashbackHackService();
+    }
+
 
     @Test
-    void shouldCalculateCashbackAmountOverBoundary() {
+    public void shouldCalculateCashbackAmountOverBoundary() {
         CashbackHackService CashbackHackService = new CashbackHackService();
         int amount = 1450;
         int actual = CashbackHackService.remain(amount);
         int expected = 550;
 
-        assertEquals(actual, expected);
+        assertEquals(expected, actual);
     }
 
 
-    @Test
-    void shouldCalculateCashbackAmountUnderBoundary() {
+    @org.junit.Test
+    public void shouldCalculateCashbackAmountUnderBoundary() {
         CashbackHackService CashbackHackService = new CashbackHackService();
         int amount = 800;
         int actual = CashbackHackService.remain(amount);
         int expected = 200;
 
-        assertEquals(actual, expected);
+        assertEquals(expected, actual);
     }
 
-    @Test
-    void shouldCalculateCashbackAmountUpperBoundary() {
+    @org.junit.Test
+    public void shouldCalculateCashbackAmountUpperBoundary() {
         CashbackHackService CashbackHackService = new CashbackHackService();
         int amount = 1001;
         int actual = CashbackHackService.remain(amount);
         int expected = 999;
 
-        assertEquals(actual, expected);
+        assertEquals(expected, actual);
     }
 
 
-    @Test
-    void shouldCalculateCashbackAmountLowerBoundary() {
+    @org.junit.Test
+    public void shouldCalculateCashbackAmountLowerBoundary() {
         CashbackHackService CashbackHackService = new CashbackHackService();
         int amount = 999;
         int actual = CashbackHackService.remain(amount);
         int expected = 1;
 
-        assertEquals(actual, expected);
+        assertEquals(expected, actual);
     }
 
-    @Test
-    void shouldCalculateCashbackAmountOnBoundary1000() {
+    @org.junit.Test
+    public void shouldCalculateCashbackAmountOnBoundary1000() {
         CashbackHackService CashbackHackService = new CashbackHackService();
         int amount = 1000;
         int actual = CashbackHackService.remain(amount);
         int expected = 0;
 
-        assertEquals(actual, expected);
+        assertEquals(expected, actual);
     }
 
-    @Test
-    void shouldCalculateCashbackAmountOnBoundaryZero() {
+    @org.junit.Test
+    public void shouldCalculateCashbackAmountOnBoundaryZero() {
         CashbackHackService CashbackHackService = new CashbackHackService();
         int amount = 0;
         int actual = CashbackHackService.remain(amount);
         int expected = 1000;
 
-        assertEquals(actual, expected);
+        assertEquals(expected, actual);
     }
 
 }
